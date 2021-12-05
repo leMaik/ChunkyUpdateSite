@@ -11,6 +11,11 @@ on:
         required: true
         type: string
         description: Version name. `Major.Minor.Patch`
+      notes:
+        required: false
+        default: "986181675"
+        type: string
+        description: Comment ID for release notes.
 
 jobs:
   build_beta:
@@ -18,6 +23,7 @@ jobs:
     with:
       ref: ${{ github.event.inputs.ref }}
       ver: ${{ github.event.inputs.ver }}-beta-$(git rev-parse --short=7 HEAD)
+      notes: ${{ github.event.inputs.notes }}
 
   deploy_beta:
     needs: build_beta
