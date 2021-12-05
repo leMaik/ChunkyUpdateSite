@@ -5,12 +5,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/workflows/build
-        with:
-          ref: master
+    uses: ./.github/workflows/build.yml
+    with:
+      ref: master
 
   deploy:
     runs-on: ubuntu-20.04
