@@ -25,7 +25,7 @@ jobs:
         run: chmod +x gradlew
       
       - name: Build Chunky
-        run: ./gradlew install
+        run: ./gradlew install -PnewVersion="$(git describe)"
       
       - name: Include release files.
         run: cp latest.json build/latest.json && cp -r chunky/lib/* build/
@@ -38,6 +38,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-20.04
+    needs: build
     
     steps:
       - name: Clone Update Site Repository
