@@ -1,0 +1,22 @@
+{
+  "name": "2.4.2-beta-160f04d",
+  "timestamp": "2021-12-05T08:10:58Z",
+  "notes": "No release notes available.\n",
+  "libraries": [
+    {
+      "name": "chunky-core-2.4.2-beta-160f04d.jar",
+      "md5": "78805ED49B677B5C4EF19EFEB18C7044",
+      "size": 1690590
+    },
+    {
+      "name": "commons-math3-3.2.jar",
+      "md5": "AAA32530C0F744813570FF73DB018698",
+      "size": 1692782
+    },
+    {
+      "name": "fastutil-8.4.4.jar",
+      "md5": "7D189AD790C996B2C9A7AD076524586C",
+      "size": 19870806
+    }
+  ]
+}
