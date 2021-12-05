@@ -1,5 +1,4 @@
-# This builds the latest version of chunky.
-name: Build Chunky
+name: Nightly Snapshot
 
 on:
   workflow_dispatch:
