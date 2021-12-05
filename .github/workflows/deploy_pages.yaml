@@ -1,0 +1,49 @@
+name: Deploy Pages
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Clone update site repository branch gh-pages
+        uses: actions/checkout@v2
+        with:
+          path: ./gh-pages
+
+      - name: Create gh-pages branch
+        working-directory: gh-pages
+        run: |
+          git checkout --orphan gh-pages
+          git rm . -r -f
+          mkdir lib
+
+      - name: Clone update site repository branch master
+        uses: actions/checkout@v2
+        with:
+          path: ./master
+
+      - name: Copy static site files to site
+        run: |
+          cp -r ./master/site/* ./gh-pages/
+
+      - name: Clone update site repository branch snapshots
+        uses: actions/checkout@v2
+        with:
+          path: ./snapshot
+          ref: snapshot
+
+      - name: Add nightly snapshot to site
+        run: |
+          cp ./snapshot/snapshot.json ./gh-pages/snapshot.json
+          cp -r ./snapshot/lib/ ./gh-pages/
+
+      - name: Commit gh-pages branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Actions Build"
+          git push --force --set-upstream origin gh-pages

@@ -1,4 +1,3 @@
-# This builds the latest version of chunky.
 name: Build Chunky
 
 on:
@@ -38,7 +37,7 @@ jobs:
       - name: Include release files and cleanup.
         run: |
           cp latest.json build/latest.json
-          cp -r chunky/lib/* build/
+          cp -r chunky/lib/* build/lib/
           rm -rf build/tmp/
       
       - name: Archive Artifacts

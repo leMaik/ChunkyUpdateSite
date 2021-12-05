@@ -1,0 +1,48 @@
+name: Nightly Snapshot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_snapshot:
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
+    with:
+      ref: master
+      ver: "2.5.0-SNAPSHOT-$(git rev-parse --short=7 HEAD)"
+
+  deploy_snapshot:
+    runs-on: ubuntu-20.04
+    needs: build
+
+    steps:
+      - name: Clone update site repository
+        uses: actions/checkout@v2
+
+      - name: Create snapshot branch
+        run: |
+          git checkout --orphan snapshot
+          git rm . -r -f
+
+      - name: Get artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: Chunky Build
+          path: ${{ runner.temp }}/lib/
+
+      - name: Deploy snapshot files
+        run: |
+          mkdir ./lib/
+          cp ${{ runner.temp }}/lib/latest.json ./snapshot.json
+          cp ${{ runner.temp }}/lib/chunky-core-*.jar ./lib/
+          cp ${{ runner.temp }}/lib/lib/* ./lib/
+
+      - name: Commit snapshot branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Actions Build"
+          git push --force --set-upstream origin snapshot
+
+  deploy_page:
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_pages.yaml@master
