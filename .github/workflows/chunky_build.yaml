@@ -47,7 +47,7 @@ jobs:
             return github.rest.issues.getComment({
               "ThatRedox",
               "ChunkyUpdateSite",
-              ${{ notes }}
+              ${{ inputs.notes }}
             }).body;
 
       - name: Save release notes
