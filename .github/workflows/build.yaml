@@ -36,9 +36,10 @@ jobs:
       
       - name: Include release files and cleanup.
         run: |
+          rm -rf build/tmp/
+          mkdir build/lib/
           cp latest.json build/latest.json
           cp -r chunky/lib/* build/lib/
-          rm -rf build/tmp/
       
       - name: Archive Artifacts
         uses: actions/upload-artifact@v2.2.2
