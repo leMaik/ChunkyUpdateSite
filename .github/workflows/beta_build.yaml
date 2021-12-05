@@ -1,0 +1,30 @@
+name: Beta Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        required: true
+        type: string
+        description: Chunky reference to build. Branch or tag.
+      ver:
+        required: true
+        type: string
+        description: Version name. `Major.Minor.Patch`
+
+jobs:
+  build_beta:
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
+    with:
+      ref: ${{ input.ref }}
+      ver: ${{ input.ver }}-beta-$(git rev-parse --short=7 HEAD)
+
+  deploy_beta:
+    needs: build_beta
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows.deploy_branch.yaml@master
+    with:
+      branch_name: release-beta
+
+  deploy_page:
+    needs: deploy_beta
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_pages.yaml@master

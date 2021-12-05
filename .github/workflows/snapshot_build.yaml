@@ -1,0 +1,21 @@
+name: Nightly Snapshot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_snapshot:
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
+    with:
+      ref: master
+      ver: "2.5.0-SNAPSHOT-$(git rev-parse --short=7 HEAD)"
+
+  deploy_snapshot:
+    needs: build_snapshot
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows.deploy_branch.yaml@master
+    with:
+      branch_name: release-snapshot
+
+  deploy_page:
+    needs: deploy_snapshot
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_pages.yaml@master

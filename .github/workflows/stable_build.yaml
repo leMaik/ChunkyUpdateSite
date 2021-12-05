@@ -1,0 +1,30 @@
+name: Stable Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        required: true
+        type: string
+        description: Chunky reference to build. Branch or tag.
+      ver:
+        required: true
+        type: string
+        description: Version name. SemVer compliant version.
+
+jobs:
+  build_stable:
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
+    with:
+      ref: ${{ input.ref }}
+      ver: ${{ input.ver }}
+
+  deploy_stable:
+    needs: build_stable
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows.deploy_branch.yaml@master
+    with:
+      branch_name: release-stable
+
+  deploy_page:
+    needs: deploy_stable
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_pages.yaml@master

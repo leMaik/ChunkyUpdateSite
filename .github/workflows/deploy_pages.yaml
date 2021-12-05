@@ -29,15 +29,37 @@ jobs:
         run: |
           cp -r ./master/site/* ./gh-pages/
 
-      - name: Clone update site repository branch snapshots
+      - name: Clone update site repository branch release-stable
+        uses: actions/checkout@v2
+        with:
+          path: ./stable
+          ref: release-stable
+
+      - name: Add stable build to site
+        run: |
+          cp ./stable/latest.json ./gh-pages/latest.json
+          cp -r ./stable/lib/ ./gh-pages/
+
+      - name: Clone update site repository branch release-beta
+        uses: actions/checkout@v2
+        with:
+          path: ./beta
+          ref: release-beta
+
+      - name: Add beta build to site
+        run: |
+          cp ./beta/latest.json ./gh-pages/snapshot-stable.json
+          cp -r ./beta/lib/ ./gh-pages/
+
+      - name: Clone update site repository branch release-snapshot
         uses: actions/checkout@v2
         with:
           path: ./snapshot
-          ref: snapshot
+          ref: release-snapshot
 
       - name: Add nightly snapshot to site
         run: |
-          cp ./snapshot/snapshot.json ./gh-pages/snapshot.json
+          cp ./snapshot/latest.json ./gh-pages/snapshot.json
           cp -r ./snapshot/lib/ ./gh-pages/
 
       - name: Commit gh-pages branch
