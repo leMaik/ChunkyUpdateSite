@@ -26,14 +26,14 @@ jobs:
           name: Chunky Build
           path: ${{ runner.temp }}/lib/
 
-      - name: Deploy snapshot files
+      - name: Deploy build files
         run: |
           mkdir ./lib/
           cp ${{ runner.temp }}/lib/latest.json ./latest.json
           cp ${{ runner.temp }}/lib/chunky-core-*.jar ./lib/
           cp ${{ runner.temp }}/lib/lib/* ./lib/
 
-      - name: Commit snapshot branch
+      - name: Commit build branch
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
