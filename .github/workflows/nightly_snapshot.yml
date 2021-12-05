@@ -43,5 +43,3 @@ jobs:
           git add .
           git commit -m "Actions Build"
           git push --force --set-upstream origin gh-pages
-
-
