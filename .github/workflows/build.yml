@@ -49,8 +49,10 @@ jobs:
       
       - name: Create GH Pages Branch
         run: |
+          cp -r site/* ${{ runner.temp }}/site/
           git checkout --orphan gh-pages
           git rm . -r -f
+          cp -r ${{ runner.temp }}/site/* ./
       
       - name: Get Artifacts
         uses: actions/download-artifact@v2
