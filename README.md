@@ -1,2 +1,2 @@
 # Custom Chunky Update Site
-## `https://thatredox.github.io/ChunkyUpdateSite/`
+## [https://ThatRedox.github.io/ChunkyUpdateSite/](https://ThatRedox.github.io/ChunkyUpdateSite/)
