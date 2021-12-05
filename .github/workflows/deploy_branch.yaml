@@ -1,4 +1,4 @@
-name: Deploy Branch
+name: Internal Deploy Branch
 
 on:
   workflow_call:

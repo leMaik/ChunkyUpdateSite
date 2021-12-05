@@ -1,4 +1,4 @@
-name: Beta Build
+name: Build Stable Release
 
 on:
   workflow_dispatch:
@@ -10,21 +10,21 @@ on:
       ver:
         required: true
         type: string
-        description: Version name. `Major.Minor.Patch`
+        description: Version name. SemVer compliant version.
 
 jobs:
-  build_beta:
-    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
+  build_stable:
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/chunky_build.yaml@master
     with:
       ref: ${{ github.event.inputs.ref }}
-      ver: ${{ github.event.inputs.ver }}-beta-$(git rev-parse --short=7 HEAD)
+      ver: ${{ github.event.inputs.ver }}
 
-  deploy_beta:
-    needs: build_beta
+  deploy_stable:
+    needs: build_stable
     uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_branch.yaml@master
     with:
-      branch_name: release-beta
+      branch_name: release-stable
 
   deploy_page:
-    needs: deploy_beta
+    needs: deploy_stable
     uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_pages.yaml@master

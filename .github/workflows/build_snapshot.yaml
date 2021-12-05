@@ -1,11 +1,11 @@
-name: Nightly Snapshot
+name: Build Snapshot Release
 
 on:
   workflow_dispatch:
 
 jobs:
   build_snapshot:
-    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/chunky_build.yaml@master
     with:
       ref: master
       ver: "2.5.0-SNAPSHOT-$(git rev-parse --short=7 HEAD)"

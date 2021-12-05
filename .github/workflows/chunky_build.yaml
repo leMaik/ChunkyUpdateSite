@@ -1,4 +1,4 @@
-name: Build Chunky
+name: Internal Build Chunky
 
 on:
   workflow_call:

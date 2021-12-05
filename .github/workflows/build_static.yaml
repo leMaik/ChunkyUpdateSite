@@ -1,0 +1,8 @@
+name: Build and Redeploy Site
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy_page:
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_pages.yaml@master

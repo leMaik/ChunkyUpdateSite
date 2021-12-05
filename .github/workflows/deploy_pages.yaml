@@ -1,4 +1,4 @@
-name: Deploy Pages
+name: Internal Deploy Pages
 
 on:
   workflow_call:
