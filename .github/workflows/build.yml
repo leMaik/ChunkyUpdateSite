@@ -56,5 +56,5 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "Actions Build"
-          git push -f
+          git push --force --set-upstream origin gh-pages
       
