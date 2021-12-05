@@ -21,7 +21,7 @@ jobs:
 
   deploy_stable:
     needs: build_stable
-    uses: ThatRedox/ChunkyUpdateSite/.github/workflows.deploy_branch.yaml@master
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_branch.yaml@master
     with:
       branch_name: release-stable
 

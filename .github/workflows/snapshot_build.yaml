@@ -12,7 +12,7 @@ jobs:
 
   deploy_snapshot:
     needs: build_snapshot
-    uses: ThatRedox/ChunkyUpdateSite/.github/workflows.deploy_branch.yaml@master
+    uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_branch.yaml@master
     with:
       branch_name: release-snapshot
 
