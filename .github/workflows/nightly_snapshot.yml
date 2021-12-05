@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: ./.github/workflows/build.yml@master
+      - uses: ${{ github.repository }}/.github/workflows/build.yml@master
         with:
           ref: master
 
