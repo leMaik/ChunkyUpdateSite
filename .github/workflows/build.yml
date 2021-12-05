@@ -5,7 +5,10 @@ on:
   workflow_call:
     inputs:
       ref:
-        required: false
+        required: true
+        type: string
+      ver:
+        required: true
         type: string
 
 jobs:
@@ -30,7 +33,7 @@ jobs:
         run: chmod +x gradlew
       
       - name: Build Chunky
-        run: ./gradlew -PnewVersion="$(git describe)"
+        run: ./gradlew -PnewVersion=${{ inputs.ver }}
       
       - name: Include release files and cleanup.
         run: |
