@@ -12,7 +12,7 @@ jobs:
 
   deploy_snapshot:
     runs-on: ubuntu-20.04
-    needs: build
+    needs: build_snapshot
 
     steps:
       - name: Clone update site repository
@@ -45,4 +45,5 @@ jobs:
           git push --force --set-upstream origin snapshot
 
   deploy_page:
+    needs: deploy_snapshot
     uses: ThatRedox/ChunkyUpdateSite/.github/workflows/deploy_pages.yaml@master
