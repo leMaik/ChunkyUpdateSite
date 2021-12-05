@@ -27,8 +27,11 @@ jobs:
       - name: Build Chunky
         run: ./gradlew -PnewVersion="$(git describe)"
       
-      - name: Include release files.
-        run: cp latest.json build/latest.json && cp -r chunky/lib/* build/
+      - name: Include release files and cleanup.
+        run: |
+          cp latest.json build/latest.json
+          cp -r chunky/lib/* build/
+          rm -rf build/tmp/
       
       - name: Archive Artifacts
         uses: actions/upload-artifact@v2.2.2
@@ -44,17 +47,28 @@ jobs:
       - name: Clone Update Site Repository
         uses: actions/checkout@v2
       
+      - name: Create GH Pages Branch
+        run: |
+          git checkout --orphan gh-pages
+          git rm . -r -f
+      
       - name: Get Artifacts
         uses: actions/download-artifact@v2
         with:
           name: Chunky Build
+          path: ./libs/
       
-      - name: Create and Commit GH Pages Branch
+      - name: Organize Files
         run: |
-          git checkout --orphan gh-pages
+          mv ./libs/latest.json ./latest.json
+          mv ./libs/ChunkyLauncher.jar ./ChunkyLauncher.jar
+      
+      - name: Commit GH Pages Branch
+        run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
           git commit -m "Actions Build"
           git push --force --set-upstream origin gh-pages
+          
       
