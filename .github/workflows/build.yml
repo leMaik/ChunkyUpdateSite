@@ -25,7 +25,7 @@ jobs:
         run: chmod +x gradlew
       
       - name: Build Chunky
-        run: ./gradlew install -PnewVersion="$(git describe)"
+        run: ./gradlew -PnewVersion="$(git describe)"
       
       - name: Include release files.
         run: cp latest.json build/latest.json && cp -r chunky/lib/* build/
