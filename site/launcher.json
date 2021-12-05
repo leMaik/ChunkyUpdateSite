@@ -1,7 +1,7 @@
 {
-  "name": "1.12.2",
-  "timestamp": "2021-12-04T06:48:21Z",
-  "notes": "No release notes available.",
+  "name": "1.13.0",
+  "timestamp": "2021-12-04T18:05:21Z",
+  "notes": "New launcher with launcher updates and release channels!",
   "path": "ChunkyLauncher.jar",
   "channels": [
     {
