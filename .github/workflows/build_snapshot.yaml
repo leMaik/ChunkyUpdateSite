@@ -9,7 +9,7 @@ jobs:
     with:
       ref: master
       ver: "2.5.0-SNAPSHOT-$(git rev-parse --short=7 HEAD)"
-      notes: 986181675
+      notes: "986181675"
 
   deploy_snapshot:
     needs: build_snapshot
