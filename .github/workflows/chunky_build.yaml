@@ -43,7 +43,7 @@ jobs:
         id: release_notes
         with:
           result-encoding: string
-          script: return (await github.request('GET /repos/ThatRedox/ChunkyUpdateSite/issues/comments/${{ inputs.notes }}')).body;
+          script: return (await github.request('GET /repos/ThatRedox/ChunkyUpdateSite/issues/comments/${{ inputs.notes }}')).data.body;
 
       - name: Save release notes
         run: echo "${{ steps.release_notes.outputs.result }}" > "release_notes-${{ steps.release_name.outputs.result }}.txt"
