@@ -56,12 +56,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: Chunky Build
-          path: ./libs/
+          path: ./lib/
       
       - name: Organize Files
         run: |
-          mv ./libs/latest.json ./latest.json
-          mv ./libs/ChunkyLauncher.jar ./ChunkyLauncher.jar
+          mv ./lib/latest.json ./latest.json
+          mv ./lib/ChunkyLauncher.jar ./ChunkyLauncher.jar
       
       - name: Commit GH Pages Branch
         run: |
