@@ -16,8 +16,8 @@ jobs:
   build_stable:
     uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
     with:
-      ref: ${{ inputs.ref }}
-      ver: ${{ inputs.ver }}
+      ref: ${{ github.event.inputs.ref }}
+      ver: ${{ github.event.inputs.ver }}
 
   deploy_stable:
     needs: build_stable

@@ -16,8 +16,8 @@ jobs:
   build_beta:
     uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yaml@master
     with:
-      ref: ${{ inputs.ref }}
-      ver: ${{ inputs.ver }}-beta-$(git rev-parse --short=7 HEAD)
+      ref: ${{ github.event.inputs.ref }}
+      ver: ${{ github.event.inputs.ver }}-beta-$(git rev-parse --short=7 HEAD)
 
   deploy_beta:
     needs: build_beta
