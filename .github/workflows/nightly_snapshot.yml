@@ -8,7 +8,7 @@ jobs:
     uses: ThatRedox/ChunkyUpdateSite/.github/workflows/build.yml@master
     with:
       ref: master
-      ver: "2.5.0-SNAPSHOT-$(git describe)"
+      ver: "2.5.0-SNAPSHOT-$(git rev-parse --short=7 HEAD)"
 
   deploy:
     runs-on: ubuntu-20.04
