@@ -1,0 +1,23 @@
+{
+  "name": "1.13.0",
+  "timestamp": "2021-12-04T18:05:21Z",
+  "notes": "New launcher with launcher updates and release channels!",
+  "path": "ChunkyLauncher.jar",
+  "channels": [
+    {
+      "name": "Stable",
+      "path": "latest.json",
+      "notes": "Latest stable version of Chunky."
+    },
+    {
+      "name": "Beta",
+      "path": "snapshot-stable.json",
+      "notes": "Latest beta version of Chunky. Snapshots of next stable patch or release candidates."
+    },
+    {
+      "name": "Snapshot",
+      "path": "snapshot.json",
+      "notes": "Latest nightly snapshot of Chunky."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "2.4.1",
+  "timestamp": "2021-12-05T08:09:10Z",
+  "notes": "Thanks to all the contributors who made this release possible!\n\nHighlights:\n* Plenty of bug fixes\n* Add button to download player skins\n* Add selector for entity types to load\n\nFull changelog: https://github.com/chunky-dev/chunky/releases/tag/2.4.1\n",
+  "libraries": [
+    {
+      "name": "chunky-core-2.4.1.jar",
+      "md5": "F6FFA9D7E4B4426C173135BF8C4D65BC",
+      "size": 1683863
+    },
+    {
+      "name": "commons-math3-3.2.jar",
+      "md5": "AAA32530C0F744813570FF73DB018698",
+      "size": 1692782
+    },
+    {
+      "name": "fastutil-8.4.4.jar",
+      "md5": "7D189AD790C996B2C9A7AD076524586C",
+      "size": 19870806
+    }
+  ]
+}
