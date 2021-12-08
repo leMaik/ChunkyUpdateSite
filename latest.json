@@ -1,0 +1,22 @@
+{
+  "name": "2.5.0-SNAPSHOT-7b67ad1",
+  "timestamp": "2021-12-08T07:13:25Z",
+  "notes": "No release notes available.\n",
+  "libraries": [
+    {
+      "name": "chunky-core-2.5.0-SNAPSHOT-7b67ad1.jar",
+      "md5": "536B472F3AC8853235F373E4421FE7BF",
+      "size": 1652925
+    },
+    {
+      "name": "commons-math3-3.2.jar",
+      "md5": "AAA32530C0F744813570FF73DB018698",
+      "size": 1692782
+    },
+    {
+      "name": "fastutil-8.4.4.jar",
+      "md5": "7D189AD790C996B2C9A7AD076524586C",
+      "size": 19870806
+    }
+  ]
+}
